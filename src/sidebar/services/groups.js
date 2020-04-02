@@ -120,6 +120,8 @@ export default function groups(
         return filteredGroups;
       } catch (e) {
         toastMessenger.error(e.message);
+        // Don't show any groups if we catch an error
+        return [];
       }
     }
 
