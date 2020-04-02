@@ -7,6 +7,7 @@ import { orgName } from '../util/group-list-item-common';
 import { withServices } from '../util/service-context';
 
 import MenuItem from './menu-item';
+import MenuKeyboardNavigation from './menu-keyboard-navigation';
 
 /**
  * An item in the groups selection menu.
@@ -50,14 +51,23 @@ function GroupListItem({
     }
   };
 
-  const toggleSubmenu = event => {
+  /**
+   * Opens or closes the submenu.
+   *
+   * @param {MouseEvent|KeyboardEvent} event
+   * @param {boolean} [close] - When true, the menu closes or remains closed.
+   */
+  const toggleSubmenu = (event, close) => {
     event.stopPropagation();
 
     // Prevents group items opening a new window when clicked.
     // TODO - Fix this more cleanly in `MenuItem`.
     event.preventDefault();
-
-    onExpand(!isExpanded);
+    if (typeof close === 'boolean') {
+      onExpand(close);
+    } else {
+      onExpand(!isExpanded);
+    }
   };
 
   const copyLink = () => {

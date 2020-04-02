@@ -48,6 +48,7 @@ $menu-item-padding: 10px;
 // the menu item. For menu items with submenus, this covers the full area
 // except for the toggle that opens the submenu.
 .menu-item__action {
+  @include focus.outline-on-keyboard-focus;
   align-self: stretch;
   display: flex;
   flex-grow: 1;
@@ -122,7 +123,6 @@ $menu-item-padding: 10px;
 // Toggle button used to expand or collapse the submenu associated with a menu
 // item.
 .menu-item__toggle {
-  @include focus.outline-on-keyboard-focus;
 
   color: var.$grey-4;
   display: flex;
@@ -156,4 +156,61 @@ $menu-item-padding: 10px;
 // The container for open submenus
 .menu-item__submenu {
   border-bottom: solid 1px var.$grey-2;
+}
+
+// TODO: fix this!
+// new css below, todo: refactor and cleanup
+
+.menu-item--submenu:hover {
+  // make it a bit darker when its a submenu
+  background-color: var.$grey-3;
+}
+
+.menu-item__action {
+  //@include focus.outline-on-keyboard-focus;
+  display: flex;
+  appearance: none;
+  border: none;
+  padding-right: 0;
+  padding-left: 10px;
+  font-weight: 500;
+  min-height: 40px;
+  width: 100%;
+
+  &.is-selected {
+    $border-width: 4px;
+    border-left: $border-width solid var.$brand;
+    padding-left: $menu-item-padding - $border-width;
+  }
+
+  // make everything a bit darker when expanded
+  &.is-expanded {
+    background-color: var.$grey-1;
+    color: var.$grey-5;
+    &:hover {
+      background-color: var.$grey-3;
+    }
+    .menu-item__toggle {
+      background-color: var.$grey-4;
+      &:hover {
+        background-color: var.$grey-5;
+      }
+    }
+  }
+}
+
+.menu-item__toggle {
+  padding: 0;
+  height: 40px;
+  color: var.$grey-5;
+  svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  background-color: var.$grey-3;
+  &:hover {
+    color: var.$grey-6;
+    background-color: var.$grey-4;
+  }
 }
