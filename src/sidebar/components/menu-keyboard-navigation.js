@@ -29,7 +29,7 @@ export default function MenuKeyboardNavigation({
           firstItem.focus();
         }
       });
-      // TODO: figure out something better than this timeout hack
+      // TODO: figure out something better than this timeout hack if possible
       // The focus won't work without delaying rendering
     }
   }, [isVisible]);

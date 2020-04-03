@@ -106,8 +106,10 @@ export default function Menu({
   // It should also close if the user presses a key which activates menu items.
   const handleMenuKeyDown = event => {
     if (event.key === 'Enter' || event.key === ' ') {
-      // TODO: figure out something better than this timeout hack
+      // TODO: figure out something better than this timeout hack if possible
       // The links don't open when selected via keyboard unless you delay re-rendering
+      // I suspect this is due to the link being removed from the DOM before it propagates
+      // See https://jsfiddle.net/ft8z1wux/7
       setTimeout(() => {
         closeMenu();
       });

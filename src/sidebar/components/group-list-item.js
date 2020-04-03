@@ -7,7 +7,6 @@ import { orgName } from '../util/group-list-item-common';
 import { withServices } from '../util/service-context';
 
 import MenuItem from './menu-item';
-import MenuKeyboardNavigation from './menu-keyboard-navigation';
 
 /**
  * An item in the groups selection menu.

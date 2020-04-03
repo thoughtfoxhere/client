@@ -292,7 +292,7 @@ function startAngularApp(config) {
 
     .config(configureToastr)
 
-    // Make Angular built-ins available to services constructed by `container`.
+    // Make Angular built-ins available to services constructed by `container`. easier
     .run(registerAngularServices)
 
     .run(persistDefaults)

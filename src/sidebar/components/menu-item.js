@@ -38,9 +38,6 @@ export default function MenuItem({
 }) {
   const iconClass = 'menu-item__icon';
   const iconIsUrl = icon && icon.indexOf('/') !== -1;
-  const labelClass = classnames('menu-item__label', {
-    'menu-item__label--submenu': isSubmenuItem,
-  });
 
   const hasLeftIcon = icon || isSubmenuItem;
   const hasRightIcon = icon && isSubmenuItem;
@@ -85,8 +82,8 @@ export default function MenuItem({
     menuItem = (
       <a
         ref={menuItemRef}
-        className={classnames('menu-item__action', {
-          'menu-item--submenu': isSubmenuItem,
+        className={classnames('menu-item', {
+          'is-submenu': isSubmenuItem,
           'is-disabled': isDisabled,
         })}
         href={href}
@@ -99,7 +96,7 @@ export default function MenuItem({
         {hasLeftIcon && (
           <div className="menu-item__icon-container">{leftIcon}</div>
         )}
-        <span className={labelClass}>{label}</span>
+        <span className="menu-item__label">{label}</span>
         {hasRightIcon && (
           <div className="menu-item__icon-container">{rightIcon}</div>
         )}
@@ -124,8 +121,8 @@ export default function MenuItem({
       // eslint-disable-next-line jsx-a11y/no-static-element-interactions
       <div
         ref={menuItemRef}
-        className={classnames('menu-item__action', {
-          'menu-item--submenu': isSubmenuItem,
+        className={classnames('menu-item', {
+          'is-submenu': isSubmenuItem,
           'is-disabled': isDisabled,
           'is-expanded': isExpanded,
           'is-selected': isSelected,
@@ -138,7 +135,7 @@ export default function MenuItem({
         {hasLeftIcon && (
           <div className="menu-item__icon-container">{leftIcon}</div>
         )}
-        <span className={labelClass}>{label}</span>
+        <span className="menu-item__label">{label}</span>
         {hasRightIcon && (
           <div className="menu-item__icon-container">{rightIcon}</div>
         )}
@@ -171,7 +168,7 @@ export default function MenuItem({
                 onToggleSubmenu(event, false);
                 setTimeout(() => {
                   menuItemRef.current.focus();
-                }); // TODO: figure out something better than this timeout hack
+                }); // TODO: figure out something better than this timeout hack if possible
                 // The focus won't work without delaying rendering
               }
             }}
